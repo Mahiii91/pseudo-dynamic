@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Page setup and print layout
+   ========================================================================== */
+
+@page {
+  size: 21cm 29.7cm;
+  margin: 25mm;
+}
+
+@media print {
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header,
+  footer {
+    display: none !important;
+  }
+
+  .page {
+    width: 160mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .section {
+    padding: 0 !important;
+    border: none !important;
+  }
+}
+
+/* ==========================================================================
+   Base document styles
+   ========================================================================== */
+
+body {
+  font-family: Georgia, serif, dpdpHiero;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  line-height: 1.6;
+  background: rgb(204, 204, 204);
+  font-size: 10pt;
+  -webkit-font-smooth: subpixel-antialiased;
+  scroll-behavior: smooth;
+}
+
+.page {
+  display: block;
+  width: 210mm;
+  margin: 20px auto;
+  background: white;
+  padding: 25mm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+
+.section {
+  page-break-after: always;
+  padding-bottom: 20mm;
+  border-bottom: 1px solid #ccc;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+h1,
+h2 {
+  font-variant: small-caps;
+  margin-bottom: 12pt;
+}
+
+h1 {
+  font-size: 16pt;
+}
+
+h2 {
+  font-size: 14pt;
+}
+
+h3 {
+  text-align: left;
+}
+
+em {
+  font-variant: small-caps;
+  font-style: normal;
+}
+
+ins {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Document metadata
+   ========================================================================== */
+
+.author {
+  text-align: center;
+  margin-top: 12pt;
+  margin-bottom: 2rem;
+  font-size: 8pt;
+  font-style: italic;
+  font-variant: small-caps;
+}
+
+.objTitle {
+  display: block;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.provenance {
+  font-size: 8pt;
+}
+
+.provenance::after {
+  content: ".";
+}
+
+.date {
+  float: right;
+  font-size: 8pt;
+}
+
+.date::after {
+  content: ".";
+}
+
+.abstract {
+  background: #f4f4f4;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.introduction {
+  margin-top: 18pt;
+  text-align: justify;
+  font-size: 12pt;
+}
+
+.bibliography {
+  margin-top: 18pt;
+  text-align: justify;
+  font-size: 10pt;
+}
+
+/* ==========================================================================
+   Links and hover annotations
+   ========================================================================== */
+
+a,
+.a {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover,
+.a:hover {
+  color: rgb(219, 168, 103);
+}
+
+header a,
+header a:hover {
+  color: #ccc;
+}
+
+a[data-read],
+.a[data-read] {
+  position: relative;
+}
+
+a[data-read]:hover::before,
+.a[data-read]:hover::before {
+  position: absolute;
+  bottom: 110%;
+  right: 0;
+  content: attr(data-read);
+  background: white;
+  box-shadow: 1px 1px 2px black;
+  border-radius: 10px;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: x-small;
+  direction: ltr;
+  unicode-bidi: normal;
+  white-space: nowrap;
+  color: black;
+}
+
+/* ==========================================================================
+   Citations and definitions
+   ========================================================================== */
+
+cite {
+  position: relative;
+  font-style: normal;
+}
+
+cite dfn {
+  display: none;
+  min-width: 200%;
+  line-height: 1.2em;
+  font-style: normal;
+}
+
+cite:hover dfn {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 135%;
+  transform: translate(-50%, 0);
+  background: #f2d3ac;
+  padding: 10px;
+  box-shadow: 3px 3px 6px rgb(150, 150, 150);
+  font-family: sans-serif;
+  font-size: x-small;
+  font-style: normal;
+  color: rgb(75, 75, 75);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Figures and images
+   ========================================================================== */
+
+figure {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+img {
+  max-width: 60%;
+  height: auto;
+  border: 1px solid #ccc;
+}

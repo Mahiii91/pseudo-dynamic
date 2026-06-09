@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasargad & Persepolis: Achaemenid Royal Ceremonies</title>
+  <style>
+    :root {
+      --sand: #f4e7d8;
+      --stone: #8b6b53;
+      --clay: #c79a6f;
+      --ink: #2a2a2a;
+      --muted: #5b5047;
+      --accent: #6d4c41;
+      --shadow: rgba(45, 35, 30, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f8f1e8 0%, #efe2d4 100%);
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 1rem 1.5rem 4rem;
+      background: url('https://images.metmuseum.org/CRDImages/an/web-large/DP-37584-001.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 420px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.22), rgba(0,0,0,0.72));
+      z-index: 0;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--nav-bg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .site-nav .nav-inner {
+      width: min(1120px, 94%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: var(--stone);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      background: #f0dfc8;
+      color: var(--accent);
+    }
+
+    header .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-top: 4rem;
+    }
+
+    header h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+    }
+
+    header p {
+      margin: 0 auto;
+      font-size: 1.1rem;
+      max-width: 44rem;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1120px, 94%);
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+    }
+
+    .intro,
+    .contact {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      padding: 2rem;
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro h2,
+    .contact h2 {
+      margin-top: 0;
+      color: var(--stone);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 2rem;
+    }
+
+    .part {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 28px var(--shadow);
+      border: 1px solid rgba(139, 107, 83, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .part img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .part-body {
+      padding: 1.4rem 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .part-body h3 {
+      margin: 0;
+      color: var(--accent);
+    }
+
+    .part-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      background: #fff2e6;
+      border-left: 4px solid var(--clay);
+      padding: 1rem 1rem 1rem 1.1rem;
+      margin-top: 1.75rem;
+      border-radius: 14px;
+      color: var(--stone);
+    }
+
+    .contact form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--stone);
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid #d7c4aa;
+      border-radius: 12px;
+      font: inherit;
+      resize: vertical;
+    }
+
+    .contact button {
+      width: fit-content;
+      padding: 0.95rem 1.4rem;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact button:hover {
+      transform: translateY(-1px);
+      background: #593b2f;
+    }
+
+    .status {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      background: rgba(217, 201, 163, 0.2);
+      color: var(--stone);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#parts">Palace Parts</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <h1>Pasargad & Persepolis</h1>
+      <p>A pseudo website about the Achaemenid ceremonial compound of Pasargad and Takht-e Jamshid in Iran, showing royal halls, gates, and court spaces with MET Museum image links.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro" id="about">
+      <h2>About the Achaemenid Ceremonial Complex</h2>
+      <p>Pasargad and Persepolis were both essential royal sites in ancient Iran. Pasargad was the first imperial capital built by Cyrus the Great, and Persepolis (Takht-e Jamshid) became the grand ceremonial center for his successors. The buildings were used for royal receptions, tribute ceremonies, worship, and the display of Persian power.</p>
+      <div class="highlight">
+        <strong>Real building use:</strong> kings met foreign delegations, priests walked in processions, and officials brought gifts to the Great King. The site was a stage for the Achaemenid Empire.</div>
+    </section>
+
+    <section id="parts" class="grid"></section>
+
+    <section class="contact" id="contact">
+      <h2>Contact & Sheet Data</h2>
+      <p>This page can load its palace part cards from a public Google Sheet. Use the sheet structure below to publish your own data:</p>
+      <ul>
+        <li><strong>Column A:</strong> title</li>
+        <li><strong>Column B:</strong> image</li>
+        <li><strong>Column C:</strong> description</li>
+        <li><strong>Column D:</strong> link</li>
+      </ul>
+      <form>
+        <label for="sheet-id">Google Sheet ID</label>
+        <input id="sheet-id" type="text" placeholder="Paste your sheet ID here">
+        <button type="button" id="load-sheet-button">Load sheet data</button>
+        <label for="message">Message</label>
+        <textarea id="message" rows="4" placeholder="Tell me what to add next..."></textarea>
+        <button type="button" id="submit-button">Save message</button>
+      </form>
+      <div id="sheet-status" class="status">Using default sheet data. Paste a Google Sheet ID above and click Load to change it.</div>
+      <p><strong>Tip:</strong> the sheet ID is stored in your browser so your page will load the same data next time.</p>
+      <p>Note: This form is not sent to a server. It only demonstrates how a contact section appears on the website.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Images and object data come from The Met Museum Open Access collection. This page is a pseudo website using image link URLs and can read data from Google Sheets.</p>
+    <p><a href="https://metmuseum.github.io/" target="_blank">MET Open Access API</a></p>
+  </footer>
+
+  <script>
+    const defaultSheetId = '1VBVZlviaFWJ0L2JX4A2HyWmc30UwDqUTb3RlgLkORWA';
+
+    const fallbackData = [
+      {
+        title: 'Gate of All Nations',
+        image: 'https://images.metmuseum.org/CRDImages/an/web-large/DP-37584-001.jpg',
+        description: 'The Gate of All Nations at Persepolis was the grand entrance where foreign envoys passed under carved stone bulls. It was the ceremonial arrival hall before the king rendered judgment or accepted tribute.',
+        link: 'https://www.metmuseum.org/art/collection/search/324042'
+      },
+      {
+        title: 'Audience Hall (Apadana)',
+        image: 'https://images.metmuseum.org/CRDImages/an/web-large/DP226593.jpg',
+        description: 'The Apadana was the large audience hall used by Achaemenid kings for public ceremonies. Here, noblemen and representatives of many nations presented gifts and swore loyalty to the king.',
+        link: 'https://www.metmuseum.org/art/collection/search/323178'
+      },
+      {
+        title: 'Royal Guard Sculpture',
+        image: 'https://images.metmuseum.org/CRDImages/an/web-large/DP-12499-019.jpg',
+        description: 'Stone heads of Persian guards like this one remind us that the palace was protected by elite troops. The guard symbolized royal security and the authority of the king in the ceremonial court.',
+        link: 'https://www.metmuseum.org/art/collection/search/324433'
+      },
+      {
+        title: 'Gold Bowl and Banquet',
+        image: 'https://images.metmuseum.org/CRDImages/an/web-large/DP-16934-011.jpg',
+        description: 'Precious vessels such as gold bowls were used in royal feasts and sacrifices. In Pasargad and Persepolis, such objects underscored imperial wealth during banquets and religious ceremonies.',
+        link: 'https://www.metmuseum.org/art/collection/search/324289'
+      },
+      {
+        title: 'Royal Tomb of Cyrus',
+        image: 'https://images.metmuseum.org/CRDImages/an/original/DP-26934-013.jpg',
+        description: 'The tomb of Cyrus is one of the earliest Persian royal monuments. It formed part of the wider royal landscape and was a place for memory, reverence, and the official record of the king’s glory.',
+        link: 'https://www.metmuseum.org/'
+      },
+      {
+        title: 'Ceremonial Processions',
+        image: 'https://images.metmuseum.org/CRDImages/an/web-large/DP226593.jpg',
+        description: 'Processions of tribute-bearers and priests were central to Achaemenid ceremonies. Stone reliefs from the time show people carrying gifts to the throne in a carefully ordered court ritual.',
+        link: 'https://www.metmuseum.org/art/collection/search/323178'
+      }
+    ];
+
+    function setStatus(message, type = 'info') {
+      const status = document.getElementById('sheet-status');
+      status.textContent = message;
+      status.style.background = type === 'error' ? 'rgba(255, 226, 226, 0.8)' : 'rgba(217, 201, 163, 0.2)';
+      status.style.color = type === 'error' ? '#8b1e1e' : 'var(--stone)';
+    }
+
+    function buildSheetUrl(sheetId) {
+      return `https://opensheet.elk.sh/${sheetId}/1`;
+    }
+
+    function parseSheetData(rows) {
+      if (!Array.isArray(rows)) return [];
+      return rows
+        .filter(row => row.title && row.image && row.description)
+        .map(row => ({
+          title: row.title,
+          image: row.image,
+          description: row.description,
+          link: row.link || '#'
+        }));
+    }
+
+    function renderGallery(items) {
+      const gallery = document.getElementById('parts');
+      gallery.innerHTML = '';
+
+      items.forEach(section => {
+        const card = document.createElement('article');
+        card.className = 'part';
+        const image = document.createElement('img');
+        image.src = section.image;
+        image.alt = section.title;
+
+        const body = document.createElement('div');
+        body.className = 'part-body';
+
+        const title = document.createElement('h3');
+        title.textContent = section.title;
+
+        const description = document.createElement('p');
+        description.textContent = section.description;
+
+        const linkWrapper = document.createElement('p');
+        const link = document.createElement('a');
+        link.href = section.link;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'View MET object';
+
+        linkWrapper.appendChild(link);
+        body.append(title, description, linkWrapper);
+        card.append(image, body);
+        gallery.appendChild(card);
+      });
+    }
+
+    function saveSheetId(sheetId) {
+      if (!sheetId) return;
+      localStorage.setItem('pseudoSheetId', sheetId);
+    }
+
+    function loadSavedSheetId() {
+      return localStorage.getItem('pseudoSheetId');
+    }
+
+    function loadSheetData(sheetId) {
+      const usedSheetId = sheetId || loadSavedSheetId() || defaultSheetId;
+      const sheetUrl = buildSheetUrl(usedSheetId);
+      document.getElementById('sheet-id').value = usedSheetId === defaultSheetId ? '' : usedSheetId;
+      setStatus('Loading sheet data…');
+
+      fetch(sheetUrl)
+        .then(response => {
+          if (!response.ok) throw new Error('Sheet fetch failed');
+          return response.json();
+        })
+        .then(data => {
+          const items = parseSheetData(data);
+          if (items.length > 0) {
+            renderGallery(items);
+            if (sheetId) saveSheetId(sheetId);
+            setStatus(`Loaded ${items.length} items from Google Sheet.`);
+          } else {
+            renderGallery(fallbackData);
+            setStatus('Sheet loaded but data was missing or invalid. Showing default items.', 'error');
+          }
+        })
+        .catch(error => {
+          renderGallery(fallbackData);
+          setStatus('Could not load the sheet. Showing default items instead.', 'error');
+          console.error(error);
+        });
+    }
+
+    document.getElementById('load-sheet-button').addEventListener('click', () => {
+      const customSheetId = document.getElementById('sheet-id').value.trim();
+      loadSheetData(customSheetId);
+    });
+
+    document.getElementById('submit-button').addEventListener('click', () => {
+      const message = document.getElementById('message').value.trim();
+      if (!message) return;
+      alert('Message saved in page demo: ' + message);
+      document.getElementById('message').value = '';
+    });
+
+    loadSheetData();
+  </script>
+</body>
+</html>
