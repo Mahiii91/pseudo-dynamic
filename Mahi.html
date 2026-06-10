@@ -6,14 +6,20 @@
   <title>Pasargad & Persepolis: Achaemenid Royal Ceremonies</title>
   <style>
     :root {
-      --sand: #f4e7d8;
-      --stone: #8b6b53;
-      --clay: #c79a6f;
-      --ink: #2a2a2a;
-      --muted: #5b5047;
-      --accent: #6d4c41;
-      --shadow: rgba(45, 35, 30, 0.12);
-      --nav-bg: rgba(255, 255, 255, 0.92);
+      --night: #07090f;
+      --midnight: #101521;
+      --panel: rgba(17, 22, 34, 0.86);
+      --panel-solid: #121827;
+      --gold: #d6b15f;
+      --old-gold: #9e7a35;
+      --stone: #d6b15f;
+      --copper: #b56b42;
+      --ivory: #f5ead3;
+      --mist: #c3bba9;
+      --muted: #9b927f;
+      --line: rgba(214, 177, 95, 0.22);
+      --shadow: rgba(0, 0, 0, 0.42);
+      --nav-bg: rgba(7, 9, 15, 0.76);
     }
 
     * {
@@ -23,25 +29,49 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--ink);
-      background: linear-gradient(180deg, #f8f1e8 0%, #efe2d4 100%);
+      color: var(--ivory);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(214, 177, 95, 0.16), transparent 34rem),
+        radial-gradient(circle at 86% 22%, rgba(181, 107, 66, 0.13), transparent 28rem),
+        linear-gradient(180deg, #05060a 0%, var(--night) 48%, #101018 100%);
+      min-height: 100vh;
     }
 
     header {
       position: relative;
-      text-align: center;
-      padding: 1rem 1.5rem 4rem;
-      background: url('https://images.metmuseum.org/CRDImages/an/web-large/DP-37584-001.jpg') center/cover no-repeat;
-      color: white;
-      min-height: 420px;
+      display: grid;
+      align-items: end;
+      text-align: left;
+      padding: 1rem 1.5rem 5rem;
+      background:
+        linear-gradient(90deg, rgba(5, 6, 10, 0.96) 0%, rgba(5, 6, 10, 0.74) 42%, rgba(5, 6, 10, 0.28) 100%),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Darius_I.jpg/800px-Darius_I.jpg') 78% center/auto 112% no-repeat,
+        linear-gradient(135deg, #080a10, #15120e);
+      color: var(--ivory);
+      min-height: 560px;
+      overflow: hidden;
     }
 
     header::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.22), rgba(0,0,0,0.72));
+      background:
+        linear-gradient(180deg, rgba(5, 6, 10, 0.08), rgba(5, 6, 10, 0.92)),
+        radial-gradient(circle at 76% 42%, rgba(214, 177, 95, 0.24), transparent 23rem);
       z-index: 0;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(214, 177, 95, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214, 177, 95, 0.045) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(90deg, black, transparent 80%);
     }
 
     .site-nav {
@@ -49,8 +79,9 @@
       top: 0;
       z-index: 5;
       background: var(--nav-bg);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.26);
+      backdrop-filter: blur(16px);
     }
 
     .site-nav .nav-inner {
@@ -65,39 +96,48 @@
     }
 
     .site-nav a {
-      color: var(--stone);
+      color: var(--mist);
       text-decoration: none;
       font-weight: 600;
       padding: 0.5rem 0.85rem;
+      border: 1px solid transparent;
       border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
     }
 
     .site-nav a:hover,
     .site-nav a.active {
-      background: #f0dfc8;
-      color: var(--accent);
+      background: rgba(214, 177, 95, 0.12);
+      border-color: var(--line);
+      color: var(--gold);
     }
 
     header .hero {
       position: relative;
       z-index: 1;
-      max-width: 900px;
+      width: min(1120px, 94%);
+      max-width: 1120px;
       margin: 0 auto;
-      padding-top: 4rem;
+      padding-top: 6rem;
     }
 
     header h1 {
       margin: 0 0 1rem;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      max-width: 760px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(3rem, 7vw, 6.8rem);
       line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-shadow: 0 22px 44px rgba(0, 0, 0, 0.8);
     }
 
     header p {
-      margin: 0 auto;
-      font-size: 1.1rem;
-      max-width: 44rem;
+      margin: 0;
+      font-size: 1.08rem;
+      max-width: 38rem;
       line-height: 1.7;
+      color: var(--mist);
     }
 
     .container {
@@ -108,19 +148,30 @@
 
     .intro,
     .contact {
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      background: linear-gradient(145deg, rgba(18, 24, 39, 0.94), rgba(10, 13, 22, 0.94));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.36);
       padding: 2rem;
       margin-top: -2.5rem;
       position: relative;
       z-index: 1;
+      backdrop-filter: blur(18px);
     }
 
     .intro h2,
     .contact h2 {
       margin-top: 0;
-      color: var(--stone);
+      color: var(--gold);
+      font-family: Georgia, 'Times New Roman', serif;
+      letter-spacing: 0;
+    }
+
+    .intro p,
+    .contact p,
+    .contact li {
+      color: var(--mist);
+      line-height: 1.7;
     }
 
     .grid {
@@ -131,13 +182,20 @@
     }
 
     .part {
-      background: white;
-      border-radius: 20px;
+      background: var(--panel);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 14px 28px var(--shadow);
-      border: 1px solid rgba(139, 107, 83, 0.15);
+      box-shadow: 0 18px 42px var(--shadow);
+      border: 1px solid var(--line);
       display: flex;
       flex-direction: column;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .part:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214, 177, 95, 0.46);
+      box-shadow: 0 26px 58px rgba(0, 0, 0, 0.48);
     }
 
     .part img {
@@ -145,6 +203,7 @@
       display: block;
       aspect-ratio: 4 / 3;
       object-fit: cover;
+      filter: saturate(0.82) contrast(1.08) brightness(0.86);
     }
 
     .part-body {
@@ -156,7 +215,9 @@
 
     .part-body h3 {
       margin: 0;
-      color: var(--accent);
+      color: var(--gold);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.3rem;
     }
 
     .part-body p {
@@ -165,13 +226,24 @@
       line-height: 1.7;
     }
 
+    .part-body a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .part-body a:hover {
+      color: var(--ivory);
+    }
+
     .highlight {
-      background: #fff2e6;
-      border-left: 4px solid var(--clay);
+      background: rgba(214, 177, 95, 0.11);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--gold);
       padding: 1rem 1rem 1rem 1.1rem;
       margin-top: 1.75rem;
-      border-radius: 14px;
-      color: var(--stone);
+      border-radius: 12px;
+      color: var(--ivory);
     }
 
     .contact form {
@@ -183,17 +255,30 @@
       display: block;
       font-weight: 700;
       margin-bottom: 0.35rem;
-      color: var(--stone);
+      color: var(--gold);
     }
 
     .contact input,
     .contact textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      border: 1px solid #d7c4aa;
-      border-radius: 12px;
+      border: 1px solid rgba(214, 177, 95, 0.28);
+      border-radius: 10px;
+      background: rgba(3, 5, 10, 0.42);
+      color: var(--ivory);
       font: inherit;
       resize: vertical;
+    }
+
+    .contact input::placeholder,
+    .contact textarea::placeholder {
+      color: rgba(195, 187, 169, 0.62);
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: 2px solid rgba(214, 177, 95, 0.32);
+      border-color: var(--gold);
     }
 
     .contact button {
@@ -201,24 +286,26 @@
       padding: 0.95rem 1.4rem;
       border: none;
       border-radius: 999px;
-      background: var(--accent);
-      color: white;
+      background: linear-gradient(135deg, var(--gold), var(--copper));
+      color: #140f08;
       cursor: pointer;
       font-weight: 700;
       transition: transform 0.2s ease, background 0.2s ease;
+      box-shadow: 0 12px 26px rgba(181, 107, 66, 0.2);
     }
 
     .contact button:hover {
       transform: translateY(-1px);
-      background: #593b2f;
+      background: linear-gradient(135deg, #efcf7b, #c47a4b);
     }
 
     .status {
       margin-top: 1rem;
       padding: 0.9rem 1rem;
-      border-radius: 12px;
-      background: rgba(217, 201, 163, 0.2);
-      color: var(--stone);
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(214, 177, 95, 0.11);
+      color: var(--mist);
     }
 
     footer {
@@ -228,8 +315,28 @@
     }
 
     footer a {
-      color: var(--accent);
+      color: var(--gold);
       text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        min-height: 520px;
+        padding-bottom: 4rem;
+        background:
+          linear-gradient(180deg, rgba(5, 6, 10, 0.42) 0%, rgba(5, 6, 10, 0.96) 88%),
+          url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Darius_I.jpg/800px-Darius_I.jpg') center top/cover no-repeat,
+          #080a10;
+      }
+
+      .site-nav .nav-inner {
+        justify-content: center;
+      }
+
+      .intro,
+      .contact {
+        padding: 1.35rem;
+      }
     }
   </style>
 </head>
@@ -333,8 +440,8 @@
     function setStatus(message, type = 'info') {
       const status = document.getElementById('sheet-status');
       status.textContent = message;
-      status.style.background = type === 'error' ? 'rgba(255, 226, 226, 0.8)' : 'rgba(217, 201, 163, 0.2)';
-      status.style.color = type === 'error' ? '#8b1e1e' : 'var(--stone)';
+      status.style.background = type === 'error' ? 'rgba(181, 75, 66, 0.16)' : 'rgba(214, 177, 95, 0.11)';
+      status.style.color = type === 'error' ? '#f0a49c' : 'var(--mist)';
     }
 
     function buildSheetUrl(sheetId) {
